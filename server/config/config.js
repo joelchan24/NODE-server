@@ -21,7 +21,7 @@ let urlDB;
 if(process.env.NODE_ENV==='oDEV'){
     urlDB="mongodb://localhost:27017/cafe";
 }else{
-    urlDB="mongodb+srv://joel:eCvsK3gPk0Pksmbn@cluster0.bcvnj.mongodb.net/cafe?retryWrites=true&w=majority";
+    urlDB=process.env.MONGO_URL;
 }
 //here i created a variable in the envirioment
 process.env.URLenv=urlDB;
