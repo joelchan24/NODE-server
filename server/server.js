@@ -4,6 +4,8 @@ const app = express()
 const bodyParser = require('body-parser')
 const mongoose = require('mongoose');
 
+
+
 //settings body-parser
 //esto son midelware funciones que se van disparar
 // parse application/x-www-form-urlencoded
@@ -15,8 +17,8 @@ app.use(bodyParser.json())
 
 let port=process.env.PORT;
 
-//import routes
-app.use(require('./routes/usuario'));
+//import routes global
+app.use(require('./routes/router'));
 
 //list the port
 app.listen(port,()=>{

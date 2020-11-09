@@ -6,13 +6,17 @@ const Usuario = require('../models/usuario');
 // to incript password
 const bcrypt = require('bcrypt');
 const usuario = require('../models/usuario');
-
+//middleware
+const { checkToken,CheckUserRole } = require('../middlewares/authentication');
 //unsercort to make some validations
 const _ = require('underscore');
 
 
 // get is use tu recorery data
-app.get('/usuario', function (req, res) {
+app.get('/usuario',[checkToken,CheckUserRole] , (req, res)=> {
+
+    
+
 
     let since = req.query.since || 0;
     since = Number(since);
@@ -51,7 +55,7 @@ app.get('/usuario', function (req, res) {
     // res.json('get usuario')
 })
 // post is use to create 
-app.post('/usuario', function (req, res) {
+app.post('/usuario',[checkToken,CheckUserRole] ,function (req, res) {
     let body = req.body;
 
     let usuario = new Usuario({
@@ -83,7 +87,7 @@ app.post('/usuario', function (req, res) {
 
 })
 // put is use to update some record
-app.put('/usuario/:id', function (req, res) {
+app.put('/usuario/:id',[checkToken,CheckUserRole], function (req, res) {
     // to get this params
     let id = req.params.id;
     let body = _.pick(req.body, ['name', 'email', 'img', 'role', 'status']);
@@ -108,7 +112,7 @@ app.put('/usuario/:id', function (req, res) {
 
 })
 // detele is use to delete some record
-app.delete('/usuario/:id', function (req, res) {
+app.delete('/usuario/:id',[checkToken,CheckUserRole], function (req, res) {
     let id = req.params.id;
     let cambiaStatus={status:false};
     usuario.findByIdAndUpdate(id,cambiaStatus,{new:true}, (err, usuarioBD) => {
