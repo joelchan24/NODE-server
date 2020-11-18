@@ -3,8 +3,7 @@ const express = require('express')
 const app = express()
 const bodyParser = require('body-parser')
 const mongoose = require('mongoose');
-
-
+const path=require('path');
 
 //settings body-parser
 //esto son midelware funciones que se van disparar
@@ -13,6 +12,8 @@ app.use(bodyParser.urlencoded({ extended: false }))
  
 // parse application/json
 app.use(bodyParser.json())
+//middlleware to hablidar publico la carpeta public
+app.use(express.static(path.resolve(__dirname,'../public')));
 
 
 let port=process.env.PORT;

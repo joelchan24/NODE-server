@@ -24,7 +24,9 @@ process.env.DATELIMIT=60*60*24*30;
 
 process.env.SEED=process.env.SEED||'joel-chan-tec';
 
+//google sing in
 
+process.env.CLIENT_ID=process.env.CLIENT_ID||'934858367491-tqjhfv07upvsoh5emn7h5a3tkbic6msf.apps.googleusercontent.com';
 
 //==========================
 //databases
