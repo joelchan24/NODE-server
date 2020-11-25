@@ -16,7 +16,7 @@ process.env.NODE_ENV=process.env.NODE_ENV||'DEV';
 //CADUCIDAD
 //==========================
 
-process.env.DATELIMIT=60*60*24*30;
+process.env.DATELIMIT='48h';
 
 //==========================
 //CADUCIDAD

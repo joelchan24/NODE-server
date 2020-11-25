@@ -53,7 +53,36 @@ let CheckUserRole=(req,res,next)=>{
 
 }
 
+
+let checkTokenImg = (req, res, next) => {
+
+    let token = req.query.authorization;
+    let SEED=process.env.SEED;
+    jwt.verify(token,SEED,(err,decoded)=>{
+
+        if(err){
+            return res.status(401).json({
+                ok:false,
+                err
+            });
+        }
+        
+        req.usuario=decoded.usuario;
+
+        next();
+    
+    })
+
+    // res.json({
+    //     token
+    // });
+   
+
+};
+
+
 module.exports = {
     checkToken,
-    CheckUserRole
+    CheckUserRole,
+    checkTokenImg
 };

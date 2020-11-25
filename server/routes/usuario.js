@@ -55,7 +55,7 @@ app.get('/usuario',[checkToken,CheckUserRole] , (req, res)=> {
     // res.json('get usuario')
 })
 // post is use to create 
-app.post('/usuario',[checkToken,CheckUserRole] ,function (req, res) {
+app.post('/usuario' ,[checkToken,CheckUserRole],function (req, res) {
     let body = req.body;
 
     let usuario = new Usuario({
@@ -138,28 +138,7 @@ app.delete('/usuario/:id',[checkToken,CheckUserRole], function (req, res) {
             usuario: usuarioBD
         })
 
-    // usuario.findByIdAndDelete(id, (err, usuarioBD) => {
-    //     if (err) {
-    //         return res.status(400).json({
-    //             ok: false,
-    //             err
-
-    //         });
-    //     }
-
-    //     if (usuarioBD === null) {
-    //         return res.status(400).json({
-    //             ok: false,
-    //             message: 'user not found'
-
-    //         });
-    //     }
-
-
-    //     return res.json({
-    //         ok: true,
-    //         usuario: usuarioBD
-    //     })
+    
     })
 })
 

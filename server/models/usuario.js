@@ -11,12 +11,12 @@ let Schema=mongoose.Schema;
 let usuarioSchema = new Schema({
     name: {
         type: String,
-        required: [true, 'name is necesary']
+        required: [true, 'name is necessary']
     },
     email: {
         type: String,
         unique: true,
-        required: [true, 'email is necesary']
+        required: [true, 'email is necessary']
     },
     password: {
         type: String,
@@ -55,4 +55,4 @@ usuarioSchema.methods.toJSON=function(){
 
 usuarioSchema.plugin(moongoseValidator, {message:'{PATH} must be unique, this email already exist'})
 
-module.exports = mongoose.model('usuario', usuarioSchema);
+module.exports = mongoose.model('User', usuarioSchema,'User');
