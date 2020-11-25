@@ -55,7 +55,7 @@ app.get('/usuario',[checkToken,CheckUserRole] , (req, res)=> {
     // res.json('get usuario')
 })
 // post is use to create 
-app.post('/usuario' ,[checkToken,CheckUserRole],function (req, res) {
+app.post('/usuario' ,function (req, res) {
     let body = req.body;
 
     let usuario = new Usuario({
